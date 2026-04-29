@@ -1,0 +1,16 @@
+# Ficheiro de exemplo: Renomeia para application.properties e preenche com os teus dados reais
+
+# Configurações da Base de Dados
+spring.datasource.url=jdbc:postgresql://localhost/alura_series
+spring.datasource.username=postgres
+spring.datasource.password=A_TUA_PASSWORD_AQUI
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Configurações do Hibernate/JPA
+hibernate.dialect=org.hibernate.dialect.HSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.format-sql=true
+
+# Chave da API do OMDB
+omdb.apikey=A_TUA_CHAVE_API_AQUI

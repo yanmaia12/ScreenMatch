@@ -1,0 +1,247 @@
+.hidden {
+    display: none !important;
+}
+
+main {
+    padding: 0 4vw 4vw 4vw;
+}
+
+/* Cabeçalho Editorial */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4vw;
+    border-bottom: var(--border-heavy);
+    margin-bottom: 4vw;
+}
+
+.cabecalho__logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.cabecalho__logo h1 {
+    font-size: clamp(4rem, 8vw, 10rem);
+    letter-spacing: -2px;
+    color: var(--text-color);
+}
+
+.cabecalho__logo h1 .dot {
+    color: var(--accent-color);
+}
+
+.filtro-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.filtro-container label {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.cabecalho__opcoes {
+    display: flex;
+    gap: 1em;
+}
+
+.material-symbols-outlined {
+    color: var(--text-color);
+    font-size: 32px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.material-symbols-outlined:hover {
+    color: var(--accent-color);
+}
+
+/* Títulos das Seções */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1.5em;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 0.5em;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+.badge {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-family: var(--font-display);
+    padding: 2px 8px;
+    font-size: 1.2rem;
+}
+
+.section {
+    margin-bottom: 5vw;
+}
+
+/* Lista de Filmes injetada pelo JS */
+.lista {
+    list-style-type: none;
+    display: flex;
+    gap: 2em;
+    overflow-x: auto;
+    padding: 16px 16px 40px 16px;
+    /* Esconde barra de rolagem mas permite scroll horizontal */
+    scrollbar-width: auto; 
+    scrollbar-color: var(--text-color) var(--bg-color);
+}
+.lista::-webkit-scrollbar {
+    height: 14px;
+}
+.lista::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-top: 2px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
+}
+.lista::-webkit-scrollbar-thumb {
+    background-color: var(--text-color);
+    cursor: pointer;
+}
+.lista::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color);
+}
+
+.lista li {
+    flex: 0 0 auto;
+}
+
+.lista li a {
+    display: block;
+    outline: none;
+}
+
+/* Posteres com estilo Brutalista */
+.lista li img {
+    width: 280px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border: var(--border-heavy);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 8px 8px 0px rgba(17, 17, 17, 0.1);
+}
+
+.lista li:hover img {
+    filter: grayscale(0%) contrast(100%);
+    transform: translate(-8px, -8px);
+    box-shadow: 16px 16px 0px var(--text-color);
+    border-color: var(--accent-color);
+}
+
+/* MODAL DE BUSCA BRUTALISTA */
+.modal-brutalista {
+    border: none;
+    background-color: var(--text-color); /* Fundo preto */
+    color: var(--bg-color); /* Letra clara */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 10vw;
+    /* Aqui o display: flex foi removido para nascer invisível */
+}
+
+/* O Segredo: Só aplica o layout quando o JS mandar abrir! */
+.modal-brutalista[open] {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* O ::backdrop é o fundo quando o dialog está aberto */
+.modal-brutalista::backdrop {
+    background-color: rgba(17, 17, 17, 0.95);
+}
+
+.modal-conteudo {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn-fechar {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-family: var(--font-display);
+    font-size: 2rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease;
+}
+
+.btn-fechar:hover {
+    transform: translateX(-10px);
+}
+
+.modal-brutalista h2 {
+    font-size: clamp(3rem, 8vw, 8rem);
+    color: var(--bg-color);
+    margin-bottom: 1rem;
+    border-bottom: 4px solid var(--accent-color);
+    padding-bottom: 0.2em;
+}
+
+#form-busca {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#input-nome-serie {
+    background: transparent;
+    border: none;
+    border-bottom: 4px solid var(--bg-color);
+    color: var(--accent-color);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    padding: 10px 0;
+    outline: none;
+    text-transform: uppercase;
+}
+
+#input-nome-serie::placeholder {
+    color: rgba(244, 244, 240, 0.3);
+}
+
+#btn-buscar {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+#btn-buscar:hover {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 10px 10px 0px var(--accent-color);
+    transform: translate(-5px, -5px);
+}
+
+.mensagem-modal {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+.mensagem-sucesso { background-color: #28a745; color: white; }
+.mensagem-erro { background-color: var(--accent-color); color: white; }

@@ -1,0 +1,181 @@
+/* Layout da página de detalhes */
+.cabecalho-simples {
+    padding: 2vw 4vw;
+    border-bottom: var(--border-heavy);
+}
+
+.btn-voltar {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.btn-voltar:hover {
+    color: var(--accent-color);
+}
+
+.ficha {
+    padding: 4vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4vw;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 900px) {
+    .ficha {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+/* O JS cria uma img e uma div dentro de .ficha-descricao */
+.ficha-descricao {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3vw;
+    align-items: start;
+}
+
+@media screen and (min-width: 1200px) {
+    .ficha-descricao {
+        grid-template-columns: 400px 1fr;
+    }
+}
+
+.ficha-descricao img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border: var(--border-heavy);
+    box-shadow: 12px 12px 0px var(--text-color);
+}
+
+.ficha-descricao div h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    color: var(--text-color);
+    margin-bottom: 0.5em;
+    line-height: 0.9;
+    word-wrap: break-word;
+}
+
+.descricao-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-top: 2px solid var(--text-color);
+    padding-top: 1.5em;
+}
+
+.descricao-texto b {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.2em;
+}
+
+/* Sessão de Temporadas e Episódios */
+.ficha-interativa {
+    background-color: #EAE8E3;
+    border: var(--border-heavy);
+    padding: 2vw;
+    height: fit-content;
+}
+
+.ficha-temporada h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.dropdown-select {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+/* Lista de episódios injetada pelo JS */
+.episodios {
+    margin-top: 2em;
+    /* Limitamos a altura da caixa para não quebrar o layout da página */
+    max-height: 60vh; 
+    overflow-y: auto;
+    padding-right: 1em;
+    
+    /* ESCONDER A BARRA DE ROLAGEM NO FIREFOX */
+    scrollbar-width: none; 
+}
+
+/* ESCONDER A BARRA DE ROLAGEM NO CHROME/EDGE/SAFARI */
+.episodios::-webkit-scrollbar {
+    display: none;
+}
+
+.episodios p {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--text-color);
+    
+    /* Efeito de Separador Fixo (Dossier Físico) */
+    position: sticky;
+    top: 0;
+    /* Usamos a cor de fundo da caixa interativa para tapar o texto que passa por baixo */
+    background-color: #EAE8E3; 
+    padding-top: 10px;
+    padding-bottom: 5px;
+    z-index: 10;
+}
+
+.episodios-lista {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-bottom: 2em;
+}
+
+.episodios-lista li {
+    font-size: 1.1rem;
+    padding: 0.5em 0;
+    border-bottom: 1px dashed #ccc;
+    position: relative;
+    padding-left: 1.5em;
+}
+
+.episodios-lista li::before {
+    content: ">>";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Badge Brutalista para as Notas dos Episódios */
+.nota-badge {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-family: var(--font-display);
+    padding: 2px 8px;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    display: inline-block;
+    letter-spacing: 1px;
+    transform: translateY(-2px); /* Dá uma ligeira levantada para alinhar com o texto */
+    box-shadow: 2px 2px 0px var(--text-color); /* Pequena sombra dura */
+}
+
+/* Opcional: Destacar a Temporada e o Episódio na listagem de Top 5 */
+.episodios-lista li b {
+    color: var(--text-color);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-right: 5px;
+}

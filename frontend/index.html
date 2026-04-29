@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <title>SCREENMATCH</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="cabecalho__logo">
+            <h1>SCREEN<br>MATCH<span class="dot">.</span></h1>
+            
+            <div class="filtro-container">
+                <label for="categoria-select">FILTRAR ACERVO:</label>
+                <select id="categoria-select" data-categorias>
+                    <option value="todos">Todas as Categorias</option>
+                    <option value="comédia">Comédia</option>
+                    <option value="romance">Romance</option>
+                    <option value="animação">Animação</option>
+                    <option value="terror">Terror</option>
+                    <option value="ação">Ação</option>
+                    <option value="crime">Crime</option>
+                    <option value="drama">Drama</option>
+                    <option value="aventura">Aventura</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="cabecalho__opcoes">
+            <span id="btn-abrir-busca" class="material-symbols-outlined">search</span>
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </div>
+    </header>
+
+    <main>
+        <section data-name="lancamentos" class="section">
+            <div class="section-header">
+                <h2>Lançamentos</h2>
+                <span class="badge">NOVO</span>
+            </div>
+        </section>
+
+        <section data-name="top5" class="section">
+            <div class="section-header">
+                <h2>Top 5</h2>
+                <span class="badge">POPULAR</span>
+            </div>
+        </section>
+
+        <section data-name="series" class="section">
+            <div class="section-header">
+                <h2>Acervo Completo</h2>
+            </div>
+        </section>
+
+        <section data-name="categoria" class="hidden pesquisa section">
+            <div class="section-header">
+                <h2>Resultado da Pesquisa</h2>
+            </div>
+        </section>
+
+        <dialog id="modal-busca" class="modal-brutalista">
+            <div class="modal-conteudo">
+                <button id="btn-fechar-modal" class="btn-fechar">[ X ] FECHAR</button>
+                <h2>BUSCAR NO ACERVO GERAL_</h2>
+                <form id="form-busca">
+                    <input type="text" id="input-nome-serie" placeholder="DIGITE O NOME DA SÉRIE (EX: THE SOPRANOS)" required autocomplete="off">
+                    <button type="submit" id="btn-buscar">PESQUISAR E ADICIONAR >></button>
+                </form>
+                <p id="mensagem-modal" class="mensagem-modal hidden"></p>
+            </div>
+        </dialog>
+    </main>
+    <script src="./scripts/index.js" type="module"></script>
+</body>
+</html>

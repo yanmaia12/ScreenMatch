@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --bg-color: #F4F4F0; /* Fundo cor de papel antigo/roteiro */
+    --text-color: #111111; /* Preto quase puro */
+    --accent-color: #FF3503; /* Vermelho alerta/câmera */
+    --font-display: 'Anton', sans-serif; /* Títulos gigantes e brutais */
+    --font-script: 'Courier Prime', monospace; /* Fonte de roteiro de cinema */
+    --border-heavy: 4px solid #111111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-script);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Textura de ruído de filme analógico via CSS */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* Estilo brutalista para selects */
+select {
+    font-family: var(--font-script);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 10px 16px;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    appearance: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 6px 6px 0px var(--accent-color);
+}
+
+select:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--accent-color);
+}
