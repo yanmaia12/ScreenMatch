@@ -13,6 +13,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -48,5 +50,20 @@ public class SerieServiceTest {
 
         Assertions.assertNull(serieDTO, "O resultado deve ser null");
         Mockito.verify(serieRepository, Mockito.times(1)).findById(idBuscado);
+    }
+
+    @Test
+    void deveRetornarListaDeSerieDTOQuandoExistiremSeriesNoBanco(){
+        Serie serie1 = new Serie();
+        Serie serie2 = new Serie();
+        List<Serie> listaSerieTest = List.of(serie1, serie2);
+
+
+        Mockito.when(serieRepository.findAll()).thenReturn(listaSerieTest);
+        List<SerieDTO> listaSerie = serieService.obterTodasSeries();
+
+        Assertions.assertEquals(2, listaSerie.size());
+
+        Mockito.verify(serieRepository, Mockito.times(1)).findAll();
     }
 }
